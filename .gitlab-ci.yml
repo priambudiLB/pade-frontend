@@ -1,0 +1,24 @@
+image: node:latest
+
+cache:
+    paths:
+      - node_modules/
+
+stages:
+    - build
+    - deploy
+
+Build:
+    stage: build
+    script:
+      - npm install
+      - CI=false npm run build
+      
+Deployment:
+    stage: deploy
+    image: ruby:latest
+    script:
+        - apt-get update -qy
+        - apt-get install -y ruby-dev
+        - gem install dpl
+        - dpl --provider=heroku --app=$app --api-key=$apikey
