@@ -1,38 +1,161 @@
-.App {
-  text-align: center;
+.login {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 36px;
+  padding-right: 36px;
+  width: 550px;
+  height: 412px;
+  max-width: calc(100vw - 16px);
+  position:absolute; /*it can be fixed too*/
+        left:0; right:0;
+        top:0; bottom:0;
+        margin:auto;
+        overflow:auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {   
+  border-color: #9E0E0E;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #9E0E0E;
+  outline: 0 none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+  border-color: #3D3A3A;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+a {
+  color: #3D3A3A !important;
+}
+a:hover {
+   color: #000000
+}
+
+.navbar {
+  min-height: 80px;
+}
+
+.arrow {
+  width: 13px;
+  margin-right: 16px;
+}
+
+.space {
+  margin-top: 100px;
+}
+
+.space-row {
+  margin-top: 10px;
+}
+
+.back-to {
+  font-size: 18px;
+  color: #D43A3A;
+}
+
+.go-right {
+  text-align: right;
+  font-size: 18px;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  margin-bottom: 20px;
+}
+
+.admin-page {
+  margin-top: 32px;
+}
+
+.brand {
+  width: 80px;
+}
+
+.exit {
+  width: 20px;
+}
+
+.page-header {
+  font-size: 36px;
+  color: #9E0E0E;
+  margin-bottom: 20px;
+}
+
+.statistic-number {
+  color: #D43A3A;
+  font-size: 32px;
+}
+
+.statistic-text {
+  color: #3D3A3A;
+  font-size: 14px;
+}
+
+.nav-link {
+  color: #3D3A3A;
+}
+
+.active {
+  color: #D43A3A !important;
+}
+
+.navbar,
+.navbar-default {
+    background-color: white !important;
+    border-bottom: 1px solid #EEEEEE;
+}
+
+th {
+  background-color: #3D3A3A;
   color: white;
-}
+} 
 
-.App-link {
-  color: #61dafb;
-}
+thead, tbody, tr, td, th { display: block; }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+tr:after {
+    content: ' ';
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+tbody {
+  height: 500px;
+  overflow-y: auto;
+}
+tbody td, thead th {
+  width: 20%;
+  float: left;
 }
