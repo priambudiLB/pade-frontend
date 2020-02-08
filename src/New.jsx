@@ -13,7 +13,7 @@ function New() {
             type={"radio"}
             name="formHorizontalRadios"
             id={`custom-radio`}
-            label={`Keluhan`}
+            label={`Pengaduan`}
           />
           <div style={{width: '50px'}}></div>
           <Form.Check

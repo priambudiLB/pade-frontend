@@ -86,7 +86,7 @@ function Header() {
           <Nav className="mr-auto">
             <NavLink url="admin/dasbor" text="Dasbor" />
             <NavLink url="admin/pengumuman" text="Pengumuman" />
-            <NavLink url="admin/keluhan" text="Keluhan" />
+            <NavLink url="admin/pengaduan" text="pengaduan" />
             <NavLink url="admin/statistik" text="Statistik" />
           </Nav>
           <Nav>

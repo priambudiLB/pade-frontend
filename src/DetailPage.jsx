@@ -5,15 +5,32 @@ import { Row, Container, Col, Dropdown, Button } from "react-bootstrap";
 import arrowLeft from "./arrowLeft.svg";
 import { Link } from "react-router-dom";
 import useWindowDimensions from "./useWindowDimension";
+import axios from 'axios';
 
 function getPageFromURL(url){
   return url.split('/')[2];
 }
 function DetailPage(props) {
+  const [data, setData] = useState({});
   useEffect(() => {
     document.title = `PADE - ${getPageFromURL(window.location.pathname)} - ${props.match.params.id}`;
-    setSelected("Menunggu Persetujuan Admin")
-    setOld("Menunggu Persetujuan Admin")
+    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    axios
+      .get(
+        proxyurl +
+          `https://pade-arkavidia-backend.herokuapp.com/api/report/${props.match.params.id}/`
+      )
+      .then(res => {
+        setData(res.data);
+        setSelected(res.data.report_last_status)
+        setOld(res.data.report_last_status)
+        console.log(res);
+      }).catch(e=>{
+        setData({"report_id":"1","report_content":"Jalanan depan rumah rusak parah, sudah 5 bulan gaada perbaikan.","report_sender_phone_no":"081213141516","report_sender_name":"Izzan Fakhril Islam","report_last_status":"Diproses Admin","report_category":"Infrastruktur"})
+        setSelected("Diproses")
+        console.log(e)
+        setOld("Diproses")
+      });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -50,45 +67,26 @@ function DetailPage(props) {
             <Col className={getClassByWidth(width)}>
               <strong>ID</strong>
             </Col>
-            <Col md={10}>{width}</Col>
+            <Col md={10}>{data.report_id}</Col>
           </Row>
           <Row className="space-row">
           <Col className={getClassByWidth(width)}>
               <strong>Pengirim</strong>
             </Col>
-            <Col md={10}>Alekey</Col>
+            <Col md={10}>{data.report_sender_name}</Col>
           </Row>
           <Row className="space-row">
           <Col className={getClassByWidth(width)}>
               <strong>Kategori</strong>
             </Col>
-            <Col md={10}>aaa</Col>
+            <Col md={10}>{data.report_category}</Col>
           </Row>
           <Row className="space-row">
           <Col className={getClassByWidth(width)}>
               <strong>Isi</strong>
             </Col>
             <Col md={10}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-              mollis ex tortor, vel tempus nunc vulputate eget. Donec porta
-              suscipit pretium. Sed nec ligula elit. Nullam non dolor vitae quam
-              molestie mollis vitae vitae felis. Nulla eu ipsum maximus, ornare
-              leo ut, tincidunt risus. Donec lacinia tellus nec neque vulputate
-              lobortis. Sed tincidunt ornare sodales. Nam et lacus eget lacus
-              consectetur luctus. Fusce consectetur quis elit quis lacinia. Nam
-              tristique tellus at nunc aliquet, in commodo sem suscipit. Nam
-              lectus lectus, laoreet ut augue ut, facilisis congue dui. Nulla
-              placerat nunc ac massa vehicula, eu porttitor ipsum ornare. Nunc
-              nulla ante, dignissim eu venenatis faucibus, efficitur et ex.
-              Praesent malesuada turpis mollis efficitur venenatis. Nam
-              porttitor nulla sed quam mattis, nec lacinia nulla sodales.
-              Pellentesque ut nibh non odio accumsan egestas. Nulla facilisi.
-              Sed luctus, tellus a commodo luctus, justo libero blandit turpis,
-              et malesuada velit dolor non eros. Vestibulum id magna quis nisl
-              laoreet gravida sit amet sit amet ante. Maecenas at ligula eros.
-              Ut finibus, velit et auctor cursus, enim ipsum ullamcorper nulla,
-              quis bibendum tortor ligula eu ex. Fusce ac elementum nunc, vel
-              semper odio. Integer feugiat est nec elementum suscipit.
+              {data.report_content}
             </Col>
           </Row>
           <Row className="space-row">
@@ -105,9 +103,9 @@ function DetailPage(props) {
                   <Dropdown.Item eventKey='Menunggu Persetujuan Admin'>
                     Menunggu Persetujuan Admin
                   </Dropdown.Item>
-                  <Dropdown.Item eventKey='Diproses'>Diproses</Dropdown.Item>
-                  <Dropdown.Item eventKey='Diterima'>Diterima</Dropdown.Item>
-                  <Dropdown.Item eventKey='Ditolak'>Ditolak</Dropdown.Item>
+                  <Dropdown.Item eventKey='Diproses Admin'>Diproses Admin</Dropdown.Item>
+                  <Dropdown.Item eventKey='Diterima Admin'>Diterima Admin</Dropdown.Item>
+                  <Dropdown.Item eventKey='Ditolak Admin'>Ditolak Admin</Dropdown.Item>
                   <Dropdown.Item eventKey='Selesai'>Selesai</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>

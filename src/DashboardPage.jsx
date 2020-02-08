@@ -1,4 +1,4 @@
-import React, { useEffect, PureComponent } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import { PageHeader } from "./PageHeader";
 import { Statistic } from "./Statistic";
@@ -7,7 +7,6 @@ import AdminPage from "./AdminPage";
 import {
   BarChart,
   Bar,
-  Cell,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -15,10 +14,10 @@ import {
   Legend
 } from "recharts";
 import useWindowDimensions from "./useWindowDimension";
-
+import axios from 'axios';
 const data = [
   {
-    name: "Keluhan",
+    name: "pengaduan",
     a: 4000,
     b: 2400,
     c: 2400,
@@ -59,17 +58,29 @@ function getRandomColor() {
 
 function DashboardPage() {
   const { width } = useWindowDimensions();
+  const [unfinished, setUnfinished] = useState([]);
   useEffect(() => {
     document.title = `PADE - Dasbor`;
-  });
+    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    axios
+      .get(
+        proxyurl +
+          `https://pade-arkavidia-backend.herokuapp.com/api/unfinished-reports/`
+      )
+      .then(res => {
+        console.log(res)
+        setUnfinished(res.data.all_unfinished_reports)
+      })
+  }, []);
   return (
     <AdminPage
       header={<PageHeader text={"Dasbor"} />}
       content={
         <Row>
-          <Statistic number={"3"} text={"Keluhan Menunggu Persetujuan Admin"} />
-          <Statistic number={"13"} text={"Keluhan Diproses"} />
-          <Statistic number={"3"} text={"Jumlah Keluhan"} />
+          <Statistic number={unfinished.length} text={"Pengaduan Belum Selesai"} />
+          <Statistic number={"3"} text={"Pengaduan Menunggu Persetujuan Admin"} />
+          <Statistic number={"13"} text={"Pengaduan Diproses"} />
+          <Statistic number={"3"} text={"Jumlah Pengaduan"} />
           <BarChart
           className="space-top"
             width={width * 0.6}
