@@ -5,20 +5,21 @@ import { Row, Container, Col, Dropdown, Button } from "react-bootstrap";
 import arrowLeft from "./arrowLeft.svg";
 import { Link } from "react-router-dom";
 
+function getPageFromURL(url){
+  return url.split('/')[2];
+}
 function DetailPage() {
   return (
     <AdminPage
       header={
         <Container>
-        <Link to={'/admin/complaint'}>
-          <Row>
-          
-            <img class="arrow" src={arrowLeft} alt={"pakde"} />
-            <div className="back-to">
-              <strong>Kembali ke halaman Complaint</strong>
-            </div>
-            
-          </Row>
+          <Link to={`/admin/${getPageFromURL(window.location.pathname)}`}>
+            <Row>
+              <img class="arrow" src={arrowLeft} alt={"pakde"} />
+              <div className="back-to">
+                <strong>Kembali ke halaman {getPageFromURL(window.location.pathname)}</strong>
+              </div>
+            </Row>
           </Link>
         </Container>
       }

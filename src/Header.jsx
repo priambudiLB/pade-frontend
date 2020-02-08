@@ -5,18 +5,17 @@ import pakdeAdmin from "./padeAdmin.svg";
 import exit from "./exit.svg";
 
 const getClassFromURL = url => {
-  console.log(window.location.pathname+' '+url)
-  return window.location.pathname === url ? "active" : "nav-link";
+  return window.location.pathname.split('/').slice(1,3)[0] === url.split('/')[1] ? "active" : "nav-link";
 };
 
 const isActive = url => {
-  return window.location.pathname === "/" + url ? true : false;
+  return window.location.pathname.split('/')[2] === ("/" + url).split('/')[2] ? true : false;
 };
 
 const NavLink = props => (
   <Nav.Link
     active={isActive(props.url)}
-    class={getClassFromURL(props.url)}
+    className={getClassFromURL(props.url)}
     href={`/${props.url}`}
   >
     <strong>{props.text}</strong>
@@ -28,10 +27,10 @@ function Header() {
     window.location.pathname === "/" ? (
     <></>
   ) : (
-    <Navbar class="pade-nav" expand="lg">
+    <Navbar className="pade-nav" expand="lg">
       <Container>
         <Navbar.Brand href="/admin/dashboard">
-          <img class="brand" src={pakdeAdmin} alt={"pakde"} />
+          <img className="brand" src={pakdeAdmin} alt={"pakde"} />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -43,7 +42,7 @@ function Header() {
           </Nav>
           <Nav>
             <Nav.Link href="/admin">
-              <img class="exit" src={exit} alt={"pakde"} />
+              <img className="exit" src={exit} alt={"pakde"} />
               Keluar
             </Nav.Link>
           </Nav>

@@ -3,6 +3,7 @@ import "./App.css";
 import { PageHeader } from "./PageHeader";
 import AdminPage from "./AdminPage";
 import { Table } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function EventPage() {
   return (
@@ -27,7 +28,9 @@ function EventPage() {
               <td>Table cell</td>
               <td>Table cell</td>
               <td>Table cell</td>
+              <Link to={'/admin/event/'+i}>
               <td>Ubah/Lihat</td>
+              </Link>
             </tr>
           })}
           </tbody>

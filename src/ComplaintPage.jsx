@@ -3,13 +3,12 @@ import "./App.css";
 import { PageHeader } from "./PageHeader";
 import AdminPage from "./AdminPage";
 import { Table } from "react-bootstrap";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function ComplaintPage() {
   useEffect(() => {
     document.title = `PADE - Complaint`;
   });
-  const history = useHistory();
   return (
     <AdminPage
       header={<PageHeader text={"Complaint"} />}

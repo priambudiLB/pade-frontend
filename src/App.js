@@ -25,7 +25,8 @@ function App() {
           <Route path="/admin/statistic" component={StatisticPage} />
           <Route exact path="/admin/complaint" component={ComplaintPage} />
           <Route exact path="/admin/complaint/:id" component={DetailPage} />
-          <Route path="/admin/event" component={EventPage} />
+          <Route exact path="/admin/event" component={EventPage} />
+          <Route exact path="/admin/event/:id" component={DetailPage} />
         </Container>
       </Switch>
     </Router>
