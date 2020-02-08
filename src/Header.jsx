@@ -5,6 +5,7 @@ import pakdeAdmin from "./padeAdmin.svg";
 import exit from "./exit.svg";
 
 const getClassFromURL = url => {
+  console.log(window.location.pathname+' '+url)
   return window.location.pathname === url ? "active" : "nav-link";
 };
 

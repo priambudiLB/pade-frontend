@@ -32,7 +32,7 @@ function ComplaintPage() {
               <td>Table cell</td>
               <td>Table cell</td>
               <td>Table cell</td>
-              <Link to={'/admin/complaint/'+i} onClick={()=>history.push(i)}>
+              <Link to={'/admin/complaint/'+i}>
               <td>Lihat</td>
               </Link>
             </tr>
