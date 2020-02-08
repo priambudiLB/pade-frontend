@@ -168,7 +168,7 @@ th {
   color: white;
 } 
 
-thead, tbody, tr, td, th { display: block; }
+/* thead, tbody, tr, td, th { display: block; }
 
 tr:after {
     content: ' ';
@@ -183,6 +183,15 @@ tbody {
 tbody td, thead th {
   width: calc(100%/6);
   float: left;
+} */
+
+
+.space-bottom {
+  margin-bottom: 16px;
+}
+
+.space-top {
+  margin-top: 16px;
 }
 
 input[type="text"], textarea, input[type="password"] {

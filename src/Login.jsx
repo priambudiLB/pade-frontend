@@ -24,7 +24,7 @@ function Login() {
           <Form.Control type="password" placeholder="Password" />
         </Form.Group>
         <Button variant="outline-dark" type="submit">
-          <a href="/admin/dashboard" onClick={handleClick}>Login</a>
+          <a href="/admin/dasbor" onClick={handleClick}>Login</a>
         </Button>
       </Form>
     </div>

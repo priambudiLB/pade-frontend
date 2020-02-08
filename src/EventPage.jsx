@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./App.css";
 import { PageHeader } from "./PageHeader";
 import AdminPage from "./AdminPage";
-import { Table } from "react-bootstrap";
+import { Table, Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 function EventPage() {
@@ -32,7 +32,7 @@ function EventPage() {
               <td>Table cell</td>
               <td>Table cell</td>
               <Link to={'/admin/pengumuman/'+i}>
-              <td>Ubah/Lihat</td>
+              <td><Link to={'/admin/pengumuman/'+i}><Badge variant="info">Lihat</Badge></Link></td>
               </Link>
             </tr>
           })}

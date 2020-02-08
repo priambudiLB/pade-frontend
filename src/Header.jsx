@@ -76,7 +76,7 @@ function Header() {
       </Container>
     </Navbar>
   ) : (
-    <Navbar className="pade-nav" expand="lg">
+    <Navbar sticky="top" className="pade-nav" expand="lg">
       <Container>
         <Navbar.Brand href="/admin/dasbor">
           <img className="brand" src={pakdeAdmin} alt={"pakde"} />
