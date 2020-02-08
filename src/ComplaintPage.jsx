@@ -2,26 +2,27 @@ import React, { useEffect } from "react";
 import "./App.css";
 import { PageHeader } from "./PageHeader";
 import AdminPage from "./AdminPage";
-import { Table } from "react-bootstrap";
+import { Table, Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 function ComplaintPage() {
   useEffect(() => {
-    document.title = `PADE - Complaint`;
+    document.title = `PADE - Keluhan`;
   });
   return (
     <AdminPage
-      header={<PageHeader text={"Complaint"} />}
+      header={<PageHeader text={"Keluhan"} />}
       content={
         <div className="tableFixHead">
         <Table bordered responsive hover>
           <thead>
             <tr>
               <th>ID</th>
-              <th>Content</th>
-              <th>Sender</th>
+              <th>Pengirim</th>
+              <th>Kategori</th>
+              <th>Isi</th>
               <th>Status</th>
-              <th>Action</th>
+              <th>Aksi</th>
             </tr>
           </thead>
           <tbody>
@@ -31,8 +32,9 @@ function ComplaintPage() {
               <td>Table cell</td>
               <td>Table cell</td>
               <td>Table cell</td>
-              <Link to={'/admin/complaint/'+i}>
-              <td>Lihat</td>
+              <td><Badge variant="danger">Ditolak</Badge></td>
+              <Link to={'/admin/keluhan/'+i}>
+              <td><Badge variant="info">Lihat</Badge></td>
               </Link>
             </tr>
           })}

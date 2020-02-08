@@ -13,6 +13,9 @@ import StatisticPage from "./StatisticPage";
 import ComplaintPage from "./ComplaintPage";
 import EventPage from "./EventPage";
 import DetailPage from "./DetailPage";
+import HomePage from "./HomePage";
+import StatusPage from "./StatusPage";
+import New from "./New";
 
 function App() {
   return (
@@ -20,13 +23,16 @@ function App() {
       <Header />
       <Switch>
         <Container>
+          <Route exact path="/home" component={HomePage} />
+          <Route exact path="/status" component={StatusPage} />
+          <Route exact path="/new" component={New} />
           <Route exact path="/admin" component={Login} />
-          <Route path="/admin/dashboard" component={DashboardPage} />
-          <Route path="/admin/statistic" component={StatisticPage} />
-          <Route exact path="/admin/complaint" component={ComplaintPage} />
-          <Route exact path="/admin/complaint/:id" component={DetailPage} />
-          <Route exact path="/admin/event" component={EventPage} />
-          <Route exact path="/admin/event/:id" component={DetailPage} />
+          <Route path="/admin/dasbor" component={DashboardPage} />
+          <Route path="/admin/statistik" component={StatisticPage} />
+          <Route exact path="/admin/keluhan" component={ComplaintPage} />
+          <Route exact path="/admin/keluhan/:id" component={DetailPage} />
+          <Route exact path="/admin/pengumuman" component={EventPage} />
+          <Route exact path="/admin/pengumuman/:id" component={DetailPage} />
         </Container>
       </Switch>
     </Router>

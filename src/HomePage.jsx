@@ -1,17 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./App.css";
-import { PageHeader } from "./PageHeader";
-import { Statistic } from "./Statistic";
 import { Row } from "react-bootstrap";
-import AdminPage from "./AdminPage";
+import { Statistic } from "./Statistic";
+import WebTemplate from "./WebTemplate";
 
-function DashboardPage() {
-  useEffect(() => {
-    document.title = `PADE - Dasbor`;
-  });
+function HomePage() {
   return (
-    <AdminPage
-      header={<PageHeader text={"Dasbor"} />}
+    <WebTemplate
+      text={"Selamat Datang!"}
       content={
         <Row>
           <Statistic number={"3"} text={"Jumlah Acara"} />
@@ -32,4 +28,4 @@ function DashboardPage() {
   );
 }
 
-export default DashboardPage;
+export default HomePage;

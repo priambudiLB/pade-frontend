@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import AdminPage from "./AdminPage";
 import { Row, Container, Col, Dropdown, Button } from "react-bootstrap";
@@ -8,7 +8,10 @@ import { Link } from "react-router-dom";
 function getPageFromURL(url){
   return url.split('/')[2];
 }
-function DetailPage() {
+function DetailPage(props) {
+  useEffect(() => {
+    document.title = `PADE - ${getPageFromURL(window.location.pathname)} - ${props.match.params.id}`;
+  });
   return (
     <AdminPage
       header={

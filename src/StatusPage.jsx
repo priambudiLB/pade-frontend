@@ -1,25 +1,21 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./App.css";
-import { PageHeader } from "./PageHeader";
-import AdminPage from "./AdminPage";
 import { Table } from "react-bootstrap";
+import WebTemplate from "./WebTemplate";
 import { Link } from "react-router-dom";
 
-function EventPage() {
-  useEffect(() => {
-    document.title = `PADE - Statistik`;
-  });
+function StatusPage() {
   return (
-    <AdminPage
-      header={<PageHeader text={"Pengumuman"} />}
+    <WebTemplate
+      text={"Status"}
       content={
         <div className="tableFixHead">
         <Table bordered responsive hover>
           <thead>
             <tr>
               <th>ID</th>
-              <th>Name</th>
-              <th>Sender</th>
+              <th>Tanggal Pembuatan</th>
+              <th>Isi</th>
               <th>Status</th>
               <th>Action</th>
             </tr>
@@ -31,8 +27,8 @@ function EventPage() {
               <td>Table cell</td>
               <td>Table cell</td>
               <td>Table cell</td>
-              <Link to={'/admin/pengumuman/'+i}>
-              <td>Ubah/Lihat</td>
+              <Link to={'/status/'+i}>
+              <td>Lihat</td>
               </Link>
             </tr>
           })}
@@ -44,4 +40,4 @@ function EventPage() {
   );
 }
 
-export default EventPage;
+export default StatusPage;

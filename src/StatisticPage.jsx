@@ -7,11 +7,11 @@ import AdminPage from "./AdminPage";
 
 function StatisticPage() {
   useEffect(() => {
-    document.title = `PADE - Statistic`;
+    document.title = `PADE - Statistik`;
   });
   return (
     <AdminPage
-      header={<PageHeader text={"Statistic"} />}
+      header={<PageHeader text={"Statistik"} />}
       content={
         <Row>
           <Statistic number={"3"} text={"Jumlah Acara"} />
