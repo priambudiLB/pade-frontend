@@ -10,7 +10,7 @@ client = Client(account_sid, auth_token)
 
 message = client.messages \
                 .create(
-                     body="KOMUNIKASI#halooo nanya dong",
+                     body="Pengaduan dengan ID " + str(sys.argv)[0] + " " + str(sys.argv)[0],
 
                      #warga
                      from_='+17027664886',
