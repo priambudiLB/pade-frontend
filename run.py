@@ -49,7 +49,7 @@ def sms_reply():
     elif body.split('#')[0] in kategori_list:
         response = create_post(parse_category_to_code(body.split('#')[0]), body.split('#')[1])
         print(response)
-        resp.message("diterima")
+        resp.message(proses)
     else:
         resp.message(
             salah+'\n'
