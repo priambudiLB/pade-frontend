@@ -11,7 +11,10 @@ default3_reply = "Layanan PADE memiliki berbagai kategori. Jika ingin melihat da
 default4_reply = "Jika membutuhkan bantuan, ketik BANTUAN."
 default5_reply = "Jika ingin membuat keluhan tentang INFRASTRUKTUR, ketik INFRASTRUKTUR#<ISI>. Contoh: INFRASTRUKTUR#Jalan di depan gang RT 5 bolong dan rusak parah"
 default6_reply = "Jika ingin melihat status keluhan, ketik STATUS."
-kategori = "Kategori keluhan yang tersedia: Administrasi, BantuanPangan, Bencana, Dana Desa, Darurat, Informasi Pemerintahan, Infrastruktur, Jaminan Sosial, Kesehatan, Kesejahteraan Rakyat, Komunikasi"
+default7_reply = "Jika ingin membuat keluhan tentang LINGKUNGAN HIDUP, ketik LINGKUNGANHIDUP#<ISI>. Contoh: LINGKUNGANHIDUP#Ada pembuangan limbah dari pabrik baru di bagian timur desa"
+kategori = "Kategori keluhan yang tersedia: ADMINISTRASI, BANTUANPANGAN, BENCANA, DANADESA, DARURAT, INFORMASIPEMERINTAHAN, INFRASTRUKTUR, JAMINAN SOSIAL, KESEHATAN, KESEJAHTERAANRAKYAT, KOMUNIKASI, LINGKUNGANHIDUP, MUSIBAH, PARIWISATA, PAJAK, PELAYANANBARANG, PELAYANANJASA, PENDIDIKAN, PERBANKAN, PERIZINAN, PERTANIAN, SUMBERDAYAALAM, SITUASIKHUSUS, TEMPATTINGGAL, USAHA, OPSILAINNYA"
+salah = "Terima kasih telah menggunakan layanan PADE, saat ini PADE tidak dapat memproses pesan anda."
+proses = "Terima kasih telah menggunakan layanan PADE, pesan anda sedang diproses."
 
 @app.route("/sms", methods=['GET', 'POST'])
 def sms_reply():
@@ -26,17 +29,23 @@ def sms_reply():
     resp.message(default_reply)
     if body == 'KATEGORI':
         resp.message(kategori)
-        resp.message(default3_reply)
         resp.message(default4_reply)
         resp.message(default5_reply)
         resp.message(default6_reply)
-    else:
+    elif body == 'BANTUAN':
         resp.message(default2_reply)
         resp.message(default3_reply)
+        resp.message(default6_reply)
+        resp.message(default5_reply)
+        resp.message(default7_reply)
+    elif body.split('#')[0] in kategori:
+        resp.message(proses)
+    else:
+        resp.message(salah)
+        resp.message(default3_reply)
         resp.message(default4_reply)
         resp.message(default5_reply)
         resp.message(default6_reply)
-
     return str(resp)
 
 if __name__ == "__main__":
